@@ -39,7 +39,7 @@ namespace CsvWriter
           Write(_options.ColumnDelimiter);
         }
 
-        Write(value);
+        Write(value ?? string.Empty);
       }
     }
 

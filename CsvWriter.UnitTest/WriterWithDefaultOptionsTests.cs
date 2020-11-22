@@ -53,6 +53,17 @@ namespace CsvWriter.UnitTest
         writer.ToString().MustBe("1,2,3\r\n4,5,6");
       }
     }
+
+    [Fact]
+    public void handles_null_values()
+    {
+      using (Writer writer = CreateInstance(out _))
+      {
+        writer.Write("1", null, "3");
+        writer.ToString().MustBe("1,,3");
+      }
+    }
+
     private Writer CreateInstance(out MemoryStream memoryStream)
     {
       memoryStream = new MemoryStream();

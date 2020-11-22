@@ -39,7 +39,7 @@ namespace CsvWriter
           Write(_options.ColumnDelimiter);
         }
 
-        Write(value ?? string.Empty);
+        Write(value);
       }
     }
 
@@ -70,6 +70,11 @@ namespace CsvWriter
 
     private void Write(object value)
     {
+      if (value == null)
+      {
+        value = string.Empty;
+      }
+
       if (_options.RowDelimiter.Equals(value))
       {
         // when writing a new line, forget what was previously written
